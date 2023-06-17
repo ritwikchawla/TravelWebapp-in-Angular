@@ -1,0 +1,103 @@
+<ng-container *ngIf="isPreview; then previewCrad else mainCard">
+
+  </ng-container>
+  
+  <!-- Card template preview card-->
+  <ng-template #previewCrad>
+    <div class="card" [ngClass]="{'flex-row':fromDetails}">
+        <ng-container *ngIf="formData; then withFormData else withTripData">
+  
+        </ng-container>
+    </div>
+  </ng-template>
+  
+  <!-- Card template for the edit preview -->
+  <ng-template #withTripData>
+    <img *ngIf="!tripData || !tripData.image" src="../../../../assets/images/card-landscape.jpg" alt="Card image cap">
+    <img *ngIf="tripData && tripData.image" src="{{tripData.image}}" alt="Card image cap">
+    <div class="wrapper">
+      <div class="card-body">
+        <h5 *ngIf="tripData" class="card-title">{{tripData.destination}}</h5>
+        <p class="card-text text-danger">No story added yet</p>
+      </div>
+      <ul *ngIf="tripData" class="list-group list-group-flush w-100">
+        <li *ngIf="tripData.places.length ===1 && tripData.places[0] === ''" class="list-group-item">No places to visit added</li>
+        <li *ngFor="let place of tripData.places" class="list-group-item">{{place}}</li>
+      </ul>
+      <div  class="card-body text-center">
+        <button class="btn btn-success card-link" disabled (click)="clickHandler($event)">Looks Good!</button>
+      </div>
+    </div>
+  </ng-template>
+  
+  <!-- Card template for the create preview -->
+  <ng-template #withFormData>
+    <img *ngIf="!formData.image" src="../../../../assets/images/card-landscape.jpg" alt="Card image cap">
+    <img *ngIf="formData.image" src="{{formData.image}}" alt="Card image cap">
+    <div class="wrapper">
+      <div class="card-body">
+        <h5 class="card-title">{{formData.destination}}</h5>
+        <p  class="card-text"><span class="font-weight-bold">Story: </span>{{formData.story}}</p>
+      </div>
+      <ul class="list-group list-group-flush w-100">
+        <li *ngIf="formData.places.length ===1 && formData.places[0] === ''" class="list-group-item">No places to visit added</li>
+        <li *ngFor="let place of formData.places" class="list-group-item">{{place}}</li>
+      </ul>
+      <div  class="card-body text-center">
+        <button class="btn btn-success card-link" (click)="clickHandler($event)">Looks Good!</button>
+      </div>
+    </div>
+  </ng-template>
+  
+  <!-- Card template main card view -->
+  <ng-template #mainCard>
+      <div class="card" [ngClass]="{'flex-row':fromDetails}">
+          <ng-container *ngIf="fromDetails; then detailsImage else listItemImage"></ng-container>
+          <div class="wrapper">
+              <div class="card-body"> 
+                  <h5 class="card-title">{{featuredData.destination}}</h5>
+                  <p *ngIf="featuredData && featuredData.likes">Likes: <span class="font-weight-bold">{{featuredData.likes}}</span></p>
+                  <p *ngIf="featuredData && fromDetails" class="card-text">{{featuredData.story}}</p>
+                  <p *ngIf="featuredData && fromList" class="card-text">{{featuredData.story | slice:0:95}}...</p>
+              </div>
+                <ul  *ngIf="!fromList" class="list-group list-group-flush w-100">
+                    <li class="list-group-item font-weight-bold">Places you may want to visit:</li>
+                    <li *ngIf="featuredData.places.length===0" class="list-group-item">No places to visit added</li>
+                    <li *ngFor="let place of featuredData.places" class="list-group-item">{{place}}</li>
+                </ul>
+                <div [ngClass]="{'pt-0':fromList}" class="card-body text-center">
+                  <button *ngIf="fromList" class="btn btn-primary card-link" [routerLink]="['/featured/details', featuredData.id]">Details</button>
+                  <ng-container *ngIf="isAdmin; then adminButtons else userButtons"></ng-container>
+                </div>
+          </div>
+        </div>
+  </ng-template>
+
+  <!-- Image template for details card -->
+  <ng-template #detailsImage>
+      <div class="card-header">
+          <img *ngIf="!featuredData.image" src="../../../../assets/images/card-landscape.jpg" alt="Card image cap">
+          <img *ngIf="featuredData.image" src="{{featuredData.image}}" alt="Card image cap">
+      </div>
+  </ng-template>
+
+  <!-- Image template for list card -->
+  <ng-template #listItemImage>
+      <img *ngIf="!featuredData.image" src="../../../../assets/images/card-landscape.jpg" alt="Card image cap">
+      <img *ngIf="featuredData.image" src="{{featuredData.image}}" alt="Card image cap">
+  </ng-template>
+  
+  <!-- Buttons templates for the details card -->
+  <ng-template #adminButtons>
+      <!-- <button *ngIf="!fromList" class="btn btn-primary card-link" [routerLink]="['/featured/create', featuredData.id]">Edit</button>
+      <button *ngIf="!fromList" class="btn btn-danger card-link" (click)="clickHandler($event)">Delete</button> -->
+  </ng-template>
+  
+  <ng-template #userButtons>
+      <button *ngIf="fromDetails && !showReview" class="btn btn-primary  card-link" (click)="clickHandler($event)">Review</button>
+      <button *ngIf="fromDetails && showReview" class="btn btn-primary  card-link" (click)="clickHandler($event)">Hide Review</button>
+      <button *ngIf="fromDetails && !isLiked" class="btn btn-sm btn-outline-danger card-link rounded-circle like" (click)="clickHandler($event)">
+        <i class="material-icons">favorite</i>
+      </button>
+  </ng-template>
+

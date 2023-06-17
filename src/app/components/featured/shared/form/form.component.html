@@ -1,0 +1,31 @@
+<form [formGroup]="form" (submit)="submitHandler()">
+    <div class="form-group">
+        <label for="destination">Destination</label>
+        <input  [ngClass]="{'is-invalid': f.destination.touched && f.destination.hasError('required')}" type="text" class="form-control" id="destination" formControlName="destination">
+        <div class="invalid-feedback">
+          This field is required!
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="story">Short story</label>
+        <textarea [ngClass]="{'is-invalid': f.story.touched && (f.story.hasError('required') || f.story.hasError('maxlength') || f.story.hasError('minlength') )}" class="form-control" id="story" rows="3" formControlName="story"></textarea>
+    <div class="invalid-feedback">
+        This field is required and must be beteen 95 and 1000 chars!
+    </div>
+    </div>
+    <div class="form-group">
+        <label for="image">Image</label>
+        <input [ngClass]="{'is-invalid': f.image.dirty && f.image.hasError('pattern')}" type="text" class="form-control" id="image" formControlName="image">
+        <div class="invalid-feedback">
+          Please provide a valid URL starting with http and ending with jpg, gif or png.
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="places">Places to visit <span class="font-italic text-secondary">( example: First Place, Second Place, Third Place )</span></label>
+        <textarea class="form-control" id="places" rows="3" formControlName="places"></textarea>
+    </div>
+    
+    <div class="form-group text-center">
+        <button type="submit" class="btn btn-primary ml-auto mr-auto" [disabled]="form.invalid">Preview</button>
+    </div>
+</form>

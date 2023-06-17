@@ -1,0 +1,20 @@
+<div class="wrapper featured bg-light translateY-13vh w-75 custom-box mr-auto ml-auto mb-5 pb-5">
+    <div class="featured-header p-4 pt-5">
+        <h2 >Ideas for your next trip</h2>
+        <p >These are our most liked featured trips. For more check the <a routerLink="/featured/all"> All Featured</a> section</p> 
+    </div>
+
+    <a *ngFor="let item of (mostLiked$ | async)" class="featured-item" [routerLink]="['/featured/details', item.id]"> 
+      <div class="custom-box">
+        <div class="card">
+          <img *ngIf="!item.image" src="../../../../assets/images/card-landscape.jpg" alt="Card image cap">
+          <img *ngIf="item.image" src="{{item.image}}" alt="Card image cap">
+
+            <div class="card-body"> 
+                <h5 class="card-title m-0">{{item.destination}}</h5>
+                <p class="m-0">Likes: <span class="font-weight-bold">{{item.likes}}</span></p>
+            </div>
+        </div>
+      </div>
+    </a>
+</div>

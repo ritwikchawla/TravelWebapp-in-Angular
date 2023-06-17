@@ -1,0 +1,43 @@
+/* You can add global styles to this file, and also import other style files */
+html{
+    box-sizing: border-box;
+}
+
+*, *::after, *::before{
+    box-sizing: inherit;
+}
+body{
+    background: #F7F7F7;
+}
+
+button:disabled{
+    cursor: not-allowed;
+}
+
+img {
+    width:100%;
+    height:auto;
+}
+
+input {
+    background: rgba(0, 105, 217, 0.03);
+}
+
+.translateY-13vh{
+    transform: translateY(13vh);
+}
+
+.custom-shadow,
+.custom-box  {
+    box-shadow: 0.1rem 0.1rem 0.5em 0 rgba(150, 150, 150, 1);
+}
+
+.custom-box {
+    border-radius: 0.3rem;
+    padding: 1rem 1.5rem;
+}
+.row{
+    margin: 0;
+}
+
+

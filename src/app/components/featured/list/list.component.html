@@ -1,0 +1,24 @@
+<app-navigation></app-navigation>
+<div calss="container">
+    <div class="wrapper translateY-13vh w-100">
+      <div class="text-center mb-5">
+          <h1 class="text-center font-weight-bold">Featured Trips List</h1>
+          <p class="text-center">Below you can find ideas for your next trip.</p> 
+      </div>
+        <ng-container *ngIf="list$; then mainView else emptyView">
+
+        </ng-container>
+    </div>
+</div>
+<app-footer></app-footer>
+
+<ng-template #emptyView>
+        <div class="emptyView text-center ml-auto mr-auto">
+           <h3 >Sorry, no featured trips yet ...</h3>
+        </div>
+</ng-template>
+<ng-template #mainView>
+    <div *ngFor="let item of (list$ | async)" class="list-item bg-light custom-box">
+        <app-card [fromList]="true" [featuredData]="item"></app-card>
+    </div>
+</ng-template>

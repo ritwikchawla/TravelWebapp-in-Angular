@@ -1,0 +1,19 @@
+<div class="wrapper bg-light translateY-13vh w-75 custom-box mr-auto ml-auto mb-5 pb-5">
+  <div class="featured-header p-3">
+      <h2 >Reviews</h2>
+  </div>
+  <ng-container *ngIf="reviews.length; then listView else emptyView">
+
+  </ng-container>
+
+</div>
+
+
+<ng-template #emptyView>
+  <div>No reviews added yet</div>
+</ng-template>
+<ng-template #listView>
+  <div *ngFor="let review of reviews" class="custom-box mb-4">
+      <div><span class="font-weight-bold">{{review.name}}:</span> {{review.message}}</div>
+  </div>
+</ng-template>

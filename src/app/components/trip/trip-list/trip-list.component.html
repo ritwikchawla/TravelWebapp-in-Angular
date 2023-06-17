@@ -1,0 +1,21 @@
+<app-navigation></app-navigation>
+<div calss="container">
+    <div class="wrapper translateY-13vh w-100">
+        <h1 class="text-center mb-5 font-weight-bold">Trips List</h1> 
+        <ng-container *ngIf="list.length; then mainView else emptyView">
+
+        </ng-container>
+    </div>
+</div>
+<app-footer></app-footer>
+
+<ng-template #emptyView>
+        <div class="emptyView text-center ml-auto mr-auto">
+           <h3 >Sorry, you have not added any trips yet ...</h3>
+        </div>
+</ng-template>
+<ng-template #mainView>
+    <div *ngFor="let item of list" class="list-item bg-light custom-box">
+            <app-card [fromList]="true" [tripData]="item"></app-card>
+    </div>
+</ng-template>

@@ -1,0 +1,12 @@
+.review {
+    position: fixed;
+    top:0; left:0; right:70%; bottom: 0;
+    z-index: 100;
+    form {
+        width:80%;
+        margin: 10rem auto;
+    }
+    textarea {
+        background-color: rgba(0, 105, 217, 0.03);
+    }
+}

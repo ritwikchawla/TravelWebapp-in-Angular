@@ -1,0 +1,48 @@
+<form [formGroup]="form" (submit)="submitHandler()">
+    <div class="form-group">
+        <label for="destination">Destination</label>
+        <input  [ngClass]="{'is-invalid': f.destination.touched && f.destination.hasError('required')}" type="text" class="form-control" id="destination" formControlName="destination">
+        <div class="invalid-feedback">
+          This field is required!
+        </div>
+      </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="startDate">Start Date</label>
+          <input [ngClass]="{'is-invalid': f.startDate.touched && f.startDate.hasError('required')}" type="date" class="form-control" id="startDate" formControlName="startDate"required>
+          <div class="invalid-feedback">
+            This field is required!
+          </div>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="endDate">End Date</label>
+          <input [ngClass]="{'is-invalid': f.endDate.touched && f.endDate.hasError('required')}" type="date" class="form-control" id="endDate" formControlName="endDate" required>
+          <div class="invalid-feedback">
+            This field is required!
+          </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="image">Image</label>
+        <input [ngClass]="{'is-invalid': f.image.dirty && f.image.hasError('pattern')}" type="text" class="form-control" id="image" formControlName="image">
+        <div class="invalid-feedback">
+          Please provide a valid URL starting with http and ending with jpg, gif or png.
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="places">Places to visit <span class="font-italic text-secondary">( example: First Place, Second Place, Third Place )</span></label>
+        <textarea class="form-control" id="places" rows="3" formControlName="places"></textarea>
+    </div>
+    <div class="form-group">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="private" formControlName="private">
+        <label class="form-check-label" for="private">
+          Keep private
+        </label>
+      </div>
+    </div>
+    <div class="form-group text-center">
+        <button type="submit" class="btn btn-primary ml-auto mr-auto" [disabled]="form.invalid">Preview</button>
+    </div>
+</form>
+

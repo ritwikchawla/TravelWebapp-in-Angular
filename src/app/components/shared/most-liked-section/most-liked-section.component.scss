@@ -1,0 +1,34 @@
+.featured{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  
+    .featured-header {
+      flex: 0 1 100%;
+    }
+    .featured-item {
+      flex: 0 1 30%;
+    }
+    
+    a.featured-item{
+      color:inherit;
+      text-decoration:none;
+      min-height: 16rem;
+    }
+  
+    a.featured-item:hover,
+    a.featured-item:active,
+    a.featured-item:focus{
+      box-shadow: 0.1rem 0.1rem 1rem 0 rgba(150, 150, 150, 5);
+      transition: box-shadow 0.2s ease;
+    }
+    
+    .card-body {
+      display: flex;
+      justify-content: space-between;
+    }
+    .custom-box {
+      background: #F7F7F7;
+      height: 100%;
+    }
+  }

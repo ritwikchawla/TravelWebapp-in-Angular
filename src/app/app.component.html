@@ -1,0 +1,17 @@
+<ng-container *ngIf="true; then guestView else userView">
+
+</ng-container>
+
+<ng-template #guestView>
+        <div class="intro-screen">
+        <!-- <img src="../assets/images/background-intro-scrren.jpg"> -->
+        <router-outlet></router-outlet>
+        </div>
+</ng-template>
+
+<ng-template #userView>
+        <div class="intro-screen">
+        <router-outlet></router-outlet>
+        </div>
+</ng-template>
+

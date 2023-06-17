@@ -1,0 +1,27 @@
+<ng-container *ngIf="user; then userView else guestView ">
+
+</ng-container>
+
+<ng-template #guestView>
+  <div class="jumbotron guest-view">
+    <i class="material-icons">all_inclusive</i>
+  <h1 class="display-4 font-weight-normal">Plan your next trip with us!</h1>
+  <p class="lead">This app helps you plan your trip and offers you inspiring ideas for your new adventures.</p>
+  <p class="lead">
+    <a class="btn btn-outline-dark btn-lg" routerLink="/register" role="button">Start Planing</a>
+  </p>
+  </div>
+</ng-template>
+
+<ng-template #userView>
+  <app-navigation></app-navigation>
+  <div class="jumbotron bg-light translateY-13vh custom-shadow w-75 ml-auto mr-auto">
+    <h1 class="display-4 font-weight-normal">Welcome {{user.displayName}}</h1>
+    <p class="lead">Start planning your next trip or check what you have already in store from the navigation bar above.</p>
+  </div>
+  <app-most-liked-section></app-most-liked-section>
+  <app-footer></app-footer>
+</ng-template>
+
+
+

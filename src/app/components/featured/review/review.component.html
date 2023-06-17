@@ -1,0 +1,15 @@
+<div *ngIf="showReview" class="review custom-shadow bg-light">
+    <form #form="ngForm" (submit)="reviewHandler(form)">
+        <h3>Tell us what you think about {{featuredData.destination}}</h3>
+        <div class="form-group">
+            <label for="review"></label>
+            <textarea [ngClass]="{'is-invalid': review.touched && review.errors?.required}" class="form-control" id="places" rows="10" name="review" ngModel #review="ngModel" required></textarea>
+            <div class="invalid-feedback">
+                This field is required.
+            </div>
+        </div>
+        <div class="form-group text-center">
+            <button type="submit" class="btn btn-primary ml-auto mr-auto" [disabled]="form.invalid" >Review</button>
+        </div>
+    </form>
+</div>

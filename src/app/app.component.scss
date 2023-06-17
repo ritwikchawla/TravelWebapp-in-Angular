@@ -1,0 +1,31 @@
+
+.intro-screen{
+    display: flex;
+    position: absolute;
+    top:0;bottom:0;left:0;right:0;
+    justify-content: center;
+    background:url('../../src/assets/images/background-intro-scrren.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    // img {
+    //     position: fixed;
+    //     top: 50%; left:50%;
+    //     transform: translate(-50%, -50%);
+    //     width: 100%;
+    //     height: auto;
+    //     opacity:0.25;
+    //     z-index:-1;
+    // }
+}
+
+.intro-screen::before{
+    background-color: rgba(255, 255, 250, 0.75);
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+}
+
